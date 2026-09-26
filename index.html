@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroGuide - دليل الأجهزة الإلكترونية التعليمي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">⚡</span>
+                <span>ElectroGuide</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">الرئيسية</a></li>
+                <li><a href="#tutorials" class="nav-link">الشروحات</a></li>
+                <li><a href="#categories" class="nav-link">الأقسام</a></li>
+                <li><a href="#about" class="nav-link">عن الموقع</a></li>
+                <li><a href="#contact" class="nav-link">اتصل بنا</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">مرحباً بك في ElectroGuide</h1>
+            <p class="hero-subtitle">دليلك الشامل لعالم الأجهزة الإلكترونية والتكنولوجيا</p>
+            <button class="cta-button" onclick="scrollToTutorials()">ابدأ التعلم الآن</button>
+        </div>
+        <div class="hero-background">
+            <div class="floating-box"></div>
+            <div class="floating-box"></div>
+            <div class="floating-box"></div>
+        </div>
+    </section>
+
+    <!-- Search Bar -->
+    <section class="search-section">
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="ابحث عن مقال...">
+            <button class="search-btn" onclick="searchArticles()">🔍</button>
+        </div>
+    </section>
+
+    <!-- Tutorials Section -->
+    <section id="tutorials" class="tutorials">
+        <h2 class="section-title">الشروحات التعليمية</h2>
+        <div class="tutorial-grid" id="tutorialGrid"></div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="categories">
+        <h2 class="section-title">الأقسام الرئيسية</h2>
+        <div class="category-grid">
+            <div class="category-card" data-category="setup">
+                <div class="category-icon">🖥️</div>
+                <h3>إعدادات الأجهزة</h3>
+                <p>تعلم كيفية إعداد أجهزتك الإلكترونية بشكل صحيح</p>
+            </div>
+            <div class="category-card" data-category="files">
+                <div class="category-icon">📁</div>
+                <h3>إدارة الملفات</h3>
+                <p>نظم ملفاتك وبياناتك بكفاءة</p>
+            </div>
+            <div class="category-card" data-category="updates">
+                <div class="category-icon">🔄</div>
+                <h3>التحديثات</h3>
+                <p>فهم التحديثات والصيانة الدورية</p>
+            </div>
+            <div class="category-card" data-category="security">
+                <div class="category-icon">🔒</div>
+                <h3>الأمان والأداء</h3>
+                <p>حماية أجهزتك وتحسين الأداء</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Full Article -->
+    <div id="articleModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeArticleModal()">&times;</span>
+            <div id="articleContent"></div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2 class="section-title">عن ElectroGuide</h2>
+        <div class="about-content">
+            <p>ElectroGuide هو موقع تعليمي شامل مخصص لتعليم أساسيات الأجهزة الإلكترونية والتكنولوجيا للمبتدئين والمتقدمين.</p>
+            <p>نقدم شروحات عملية وسهلة الفهم تغطي جميع جوانب استخدام الأجهزة الإلكترونية بكفاءة وأمان.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">اتصل بنا</h2>
+        <form class="contact-form" onsubmit="submitContact(event)">
+            <input type="text" placeholder="اسمك" required>
+            <input type="email" placeholder="بريدك الإلكتروني" required>
+            <textarea placeholder="رسالتك..." required></textarea>
+            <button type="submit" class="submit-btn">إرسال</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 ElectroGuide - جميع الحقوق محفوظة</p>
+        <p>تم التطوير بـ ❤️ لتعليمك</p>
+    </footer>
+
+    <!-- Sound Effects -->
+    <audio id="clickSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAEAQB8AAAB9AAACABAAZGF0YQIAAAAAAA==" type="audio/wav">
+    </audio>
+    <audio id="successSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAEAQB8AAAB9AAACABAAZGF0YQIAAAAAAA==" type="audio/wav">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
